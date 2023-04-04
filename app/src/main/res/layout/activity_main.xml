@@ -1,85 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!--Inputting the cost of service-->
-    <EditText
-        android:id="@+id/cost_of_service"
-        android:layout_height="50dp"
-        android:layout_width="160dp"
-        android:inputType="numberDecimal"
-        android:hint="@string/cost_of_service"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--Service feedback question-->
-    <TextView
-        android:id="@+id/service_feedback_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/service_rating"
-        app:layout_constraintTop_toBottomOf="@+id/cost_of_service"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!--Select the quality of service-->
-    <RadioGroup
-        android:id="@+id/tip_options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/service_feedback_text"
-        android:checkedButton="@id/amazing_service_radio">
-        <RadioButton
-            android:id="@+id/amazing_service_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/amazing_service" />
-        <RadioButton
-            android:id="@+id/good_service_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/good_service" />
-        <RadioButton
-            android:id="@+id/okay_service_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/okay_service" />
-    </RadioGroup>
-
-    <!--Toggle switch to ask the user whether to round off the tip or not-->
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/round_up_switch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/round_up_tip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tip_options"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <!--Toggle the calculation of tip-->
-    <Button
-        android:id="@+id/calculate_tip_button"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/round_up_switch"
-        android:text="@string/calculate_tip" />
+        android:layout_height="match_parent">
 
-    <!--Rendering the calculated tip amount-->
-    <TextView
-        android:id="@+id/tip_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tip_amount"
-        app:layout_constraintTop_toBottomOf="@+id/calculate_tip_button"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!--Inputting the cost of service-->
+            <EditText
+                android:id="@+id/cost_of_service"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:hint="@string/cost_of_service"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--Service feedback question-->
+            <TextView
+                android:id="@+id/service_feedback_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/service_rating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cost_of_service" />
+
+            <!--Select the quality of service-->
+            <RadioGroup
+                android:id="@+id/tip_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/amazing_service_radio"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/service_feedback_text">
+
+                <RadioButton
+                    android:id="@+id/amazing_service_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amazing_service" />
+
+                <RadioButton
+                    android:id="@+id/good_service_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good_service" />
+
+                <RadioButton
+                    android:id="@+id/okay_service_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/okay_service" />
+            </RadioGroup>
+
+            <!--Toggle switch to ask the user whether to round off the tip or not-->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/round_up_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/round_up_tip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tip_options"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <!--Toggle the calculation of tip-->
+            <Button
+                android:id="@+id/calculate_tip_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate_tip"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/round_up_switch" />
+
+            <!--Rendering the calculated tip amount-->
+            <TextView
+                android:id="@+id/tip_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calculate_tip_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
